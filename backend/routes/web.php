@@ -13,6 +13,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+// Route::get('/', 'App\Http\Controllers\ImageController@index');
+// Route::get('list', 'App\Http\Controllers\ImageController@list')->name('image.list');
+Route::get('input', 'App\Http\Controllers\ImageController@input')->name('image.input');
+Route::post('input', 'App\Http\Controllers\ImageController@store')->name('image.store');
+
+Route::get('/{any}', function () {
+    return view('App');
+})->where('any', '.*');//補足：.*は、正規表現で0文字以上の任意の文字列を意味する
